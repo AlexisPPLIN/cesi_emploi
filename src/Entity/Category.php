@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
+    public function __construct()
+    {
+        $this->jobs = new ArrayCollection();
+        $this->affiliates = new ArrayCollection();
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -46,5 +53,37 @@ class Category
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getJobs(): ArrayCollection
+    {
+        return $this->jobs;
+    }
+
+    /**
+     * @param ArrayCollection $jobs
+     */
+    public function setJobs(ArrayCollection $jobs): void
+    {
+        $this->jobs = $jobs;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getAffiliates(): ArrayCollection
+    {
+        return $this->affiliates;
+    }
+
+    /**
+     * @param ArrayCollection $affiliates
+     */
+    public function setAffiliates(ArrayCollection $affiliates): void
+    {
+        $this->affiliates = $affiliates;
     }
 }
