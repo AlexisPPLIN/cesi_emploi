@@ -1,5 +1,8 @@
 # cesi_emploi
-Code du projet sur symfony 5.0.5 réalisé au CESI
+Code du projet sur symfony 5.0.5 réalisé au CESI  
+
+Méthode : je met à jour le git dès qu'un exercice est terminé   
+(pour éviter la recopie sans effort du code)
 
 ## Requirements
 
