@@ -1,5 +1,11 @@
 # cesi_emploi
-Code du projet sur symfony réalisé au CESI
+Code du projet sur symfony 5.0.5 réalisé au CESI
+
+## Requirements
+
+* PHP >= 7.2
+* composer (https://getcomposer.org/) 
+* A working database (mysql, postgresql, SQLite, ...)
 
 ## Installation
 
@@ -8,8 +14,7 @@ Code du projet sur symfony réalisé au CESI
 
 ### Install dependencies
 
-1. Install composer (https://getcomposer.org/)  
-2. `php composer.phar install` or `composer install`
+`php composer.phar install` or `composer install`
 
 ## Configuration
 
@@ -24,3 +29,11 @@ Code du projet sur symfony réalisé au CESI
 DATABASE_URL=mysql://db_user:db_pass@127.0.0.1:3306/db_name?serverVersion=10.4
 ```
 
+## Migrate database
+
+1. Create database with : `php bin\console doctrine:database:create`
+2. Create database schema with : `php bin\console doctrine:schema:create`
+3. Create first migration with : `php bin\console make:migration`
+3. Migrate database with : `php bin\console doctrine:migrations:migrate`
+
+Enjoy !
