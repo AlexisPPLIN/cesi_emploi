@@ -110,4 +110,11 @@ class Affiliate
 
         return $this;
     }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function setCreatedAtValue(){
+        $this->createdAt = new \DateTime();
+    }
 }
