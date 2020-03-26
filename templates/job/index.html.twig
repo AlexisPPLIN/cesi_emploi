@@ -10,7 +10,7 @@
 
 <div class="example-wrapper">
     {% for job in ListJobs %}
-        <li>{{ job.position }}</li>
+        <li>{{ job.getPosition() }}</li>
     {% endfor %}
 </div>
 {% endblock %}
