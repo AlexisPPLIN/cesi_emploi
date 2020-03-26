@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\JobRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Job
 {
@@ -87,7 +89,7 @@ class Job
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime",nullable=true)
      */
     private $updatedAt;
 
@@ -299,14 +301,14 @@ class Job
     }
 
     /**
-     * @ORM\PrePersist()
+     * @ORM\PrePersist
      */
     public function setCreatedAtValue(){
         $this->createdAt = new \DateTime();
     }
 
     /**
-     * @ORM\PreUpdate()
+     * @ORM\PreUpdate
      */
     public function setUpdatedAtValue(){
         $this->updatedAt = new \DateTime();

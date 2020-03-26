@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AffiliateRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Affiliate
 {
@@ -134,7 +135,7 @@ class Affiliate
     }
 
     /**
-     * @ORM\PrePersist()
+     * @ORM\PrePersist
      */
     public function setCreatedAtValue(){
         $this->createdAt = new \DateTime();
