@@ -26,7 +26,7 @@ class LoadJobData extends Fixture
         $jobSensioLabs->setLogo('apple.png');
         $jobSensioLabs->setUrl("http://www.apple.com/");
         $jobSensioLabs->setPosition("Web Developer");
-        $jobSensioLabs->setLogo("Paris, France");
+        $jobSensioLabs->setLocation("Paris, France");
         $jobSensioLabs->setDescription("Vous avez déja développé des sites Web avec symfony et vous souhaitez utiliser les technologies Open-Source. Vous avez au minimum 3 ans d'expérience dans le développement Web avec PHP ou Java et vous souhaitez participer au développement de sites Web 2.0 en utilisant les meilleurs frameworks disponibles.");
         $jobSensioLabs->setHowToApply("Envoyez votre CV à l'adresse suivante : contact@apple.com");
         $jobSensioLabs->setIsPublic(true);
