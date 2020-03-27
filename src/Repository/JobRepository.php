@@ -34,6 +34,16 @@ class JobRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findActiveByCategory(Category $category){
+        return $this->createQueryBuilder('j')
+            ->where('j.category = :category')
+            ->andWhere('j.expiresAt > :date')
+            ->setParameter('category',$category)
+            ->setParameter('date',new DateTime())
+            ->getQuery()
+            ->getResult();
+    }
+
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('c')
