@@ -322,6 +322,7 @@ class Job
     }
 
     /**
+     * @ORM\PrePersist
      * @param LifecycleEventArgs $event
      * @return $this
      * @throws \Exception
