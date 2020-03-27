@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Job;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -28,6 +30,36 @@ class JobRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('j')
             ->andWhere('j.expiresAt > :date')
             ->setParameter('date',new \DateTime())
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByExampleField($value)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findOneBySomeField($value): ?Category
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function findCategoryWithJobs()
+    {
+        return $this->createQueryBuilder('c')
+            ->join('c.jobs', 'j')
+            ->where('j.expiresAt > :date')
+            ->setParameter('date', new DateTime())
             ->getQuery()
             ->getResult();
     }

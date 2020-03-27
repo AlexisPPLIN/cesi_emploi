@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Job;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,10 +17,16 @@ class JobController extends AbstractController
      */
     public function index(EntityManagerInterface $em)
     {
-        $jobs =$em->getRepository(Job::class)->findActive();
+        $jobs=$em->getRepository(Category::class)->findCategoriesWithJobs();
+        $categories= [];
+        $jobsCategories =[];
+        foreach ($categories as $category){
+            $jobsCategories[$category->getName()] = $em->getRepository(Job::class)->findActiveByCategory($category);
+        }
+
         return $this->render('job/index.html.twig', [
             'controller_name' => 'JobController',
-            'ListJobs' => $jobs
+            'categories' => $jobsCategories,
         ]);
     }
 
