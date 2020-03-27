@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
-use App\Helper\SlugifyHelper;
+use Symfony\Component\String\Slugger\AsciiSlugger;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\JobRepository")
@@ -321,7 +321,8 @@ class Job
      * @return string
      */
     public function getCompanySlug():string{
-        return SlugifyHelper::slugify($this->company);
+        $slugger = new AsciiSlugger();
+        return $slugger->slug($this->company);
     }
 
     /**
@@ -330,6 +331,7 @@ class Job
      * @return string
      */
     public function getPositionSlug():string{
-        return SlugifyHelper::slugify($this->position);
+        $slugger = new AsciiSlugger();
+        return $slugger->slug($this->position);
     }
 }
