@@ -12,6 +12,8 @@ use Symfony\Component\String\Slugger\AsciiSlugger;
  */
 class Job
 {
+    public const OFFER_LIFETIME = 30; //Durée de vie d'une offre en jours
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -303,16 +305,32 @@ class Job
 
     /**
      * @ORM\PrePersist
+     * @param LifecycleEventArgs $event
+     * @throws \Exception
      */
-    public function setCreatedAtValue(){
+    public function setCreatedAtValue(LifecycleEventArgs $event){
         $this->createdAt = new \DateTime();
     }
 
     /**
      * @ORM\PreUpdate
+     * @param LifecycleEventArgs $event
+     * @throws \Exception
      */
-    public function setUpdatedAtValue(){
+    public function setUpdatedAtValue(LifecycleEventArgs $event){
         $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * @param LifecycleEventArgs $event
+     * @return $this
+     * @throws \Exception
+     */
+    public function setExpiresAtValue(LifecycleEventArgs $event):self{
+        if(!$this->expiresAt){
+            $this->expiresAt = new \DateTime('+'.self::OFFER_LIFETIME.' day');
+        }
+        return $this;
     }
 
     /**
