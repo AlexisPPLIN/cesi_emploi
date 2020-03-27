@@ -16,11 +16,7 @@ class JobController extends AbstractController
      */
     public function index(EntityManagerInterface $em)
     {
-        //$jobs = $em->getRepository(Job::class)->findAll();
-        $queryBuilder = $em->getRepository(Job::class)->createQueryBuilder('j');
-        $queryBuilder->andWhere('j.createdAt> :date');
-        $queryBuilder->setParameter('date',new DateTime('-30 day'));
-        $jobs = $queryBuilder->getQuery()->getResult();
+        $jobs =$em->getRepository(Job::class)->findActive(new DateTime('-30 day'));
         return $this->render('job/index.html.twig', [
             'controller_name' => 'JobController',
             'ListJobs' => $jobs
