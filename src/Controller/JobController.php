@@ -23,9 +23,13 @@ class JobController extends AbstractController
     }
 
     /**
-     * @Route("/job/{id}",name="job_show",requirements={"id"="\d+"})
+     * @Route("/job/{company}/{id}/{position}",name="job_show",requirements={
+     *     "id"="\d+",
+     *     "company" = "[A-Za-z0-9\-]+",
+     *     "position" = "[A-Za-z0-9\-]+"
+     * })
      */
-    public function show(EntityManagerInterface $em,int $id){
+    public function show(EntityManagerInterface $em,int $id,string $company,string $position){
         $job = $em->getRepository(Job::class)->find($id);
         if(null === $job){
             throw new NotFoundHttpException();

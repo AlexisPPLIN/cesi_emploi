@@ -7,14 +7,14 @@
     {% for job in ListJobs %}
         <div class="row">
                 <div class="col-5">
-                        <a href="#"><img class="img-fluid rounded" width="300px" src="{{ asset("images"/~job.logo) }}" alt="{{ job.company }}"></a>
+                        <a href="#"><img class="img-fluid rounded" width="300px" src="{{ asset("images/"~job.logo) }}" alt="{{ job.company }}"></a>
                 </div>
 
             <div class="col-7">
                     <h3>{{ job.position }}</h3>
                     <p>{{ job.description }}</p>
                     <p>Posté à {{ job.createdAt|date("m/d/Y") }}</p>
-                    <a class="btn btn-primary" href="#">En savoir plus</a>
+                    <a class="btn btn-primary" href="{{ path('job_show',{'id':job.id,'company':job.companySlug,'position':job.positionSlug}) }}">En savoir plus</a>
             </div>
         </div>
             <hr>
