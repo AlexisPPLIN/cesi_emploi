@@ -42,6 +42,11 @@ class JobController extends AbstractController
             throw new NotFoundHttpException();
         }
 
+        $currentDate = new DateTime();
+        if($job->getExpiresAt() < $currentDate){
+            throw new NotFoundHttpException();
+        }
+
         return $this->render('job/show.html.twig',[
            'job' => $job,
         ]);
