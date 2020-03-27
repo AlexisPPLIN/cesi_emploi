@@ -21,13 +21,13 @@ class JobRepository extends ServiceEntityRepository
 
     /**
      * Return all the active jobs
-     * @param \DateTime $date
      * @return mixed
+     * @throws \Exception
      */
-    public function findActive(\DateTime $date){
+    public function findActive(){
         return $this->createQueryBuilder('j')
-            ->andWhere('j.createdAt > :date')
-            ->setParameter('date',$date)
+            ->andWhere('j.expiresAt > :date')
+            ->setParameter('date',new \DateTime())
             ->getQuery()
             ->getResult();
     }

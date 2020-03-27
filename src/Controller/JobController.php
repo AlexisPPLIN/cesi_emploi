@@ -16,7 +16,7 @@ class JobController extends AbstractController
      */
     public function index(EntityManagerInterface $em)
     {
-        $jobs =$em->getRepository(Job::class)->findActive(new DateTime('-30 day'));
+        $jobs =$em->getRepository(Job::class)->findActive();
         return $this->render('job/index.html.twig', [
             'controller_name' => 'JobController',
             'ListJobs' => $jobs
