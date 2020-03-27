@@ -17,8 +17,7 @@ class JobController extends AbstractController
      */
     public function index(EntityManagerInterface $em)
     {
-        $jobs=$em->getRepository(Category::class)->findCategoriesWithJobs();
-        $categories= [];
+        $categories=$em->getRepository(Category::class)->findCategoriesWithJobs();
         $jobsCategories =[];
         foreach ($categories as $category){
             $jobsCategories[$category->getName()] = $em->getRepository(Job::class)->findActiveByCategory($category);
