@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail de l'offre{% endblock %}
+
+{% block body %}
+    <h1 class="my-4">Détail de l'offre</h1>
+    <div class="row">
+        <div class="col-5">
+            <a href="#">
+                <img class="img-fluid rounded" width="300px" src="{{ asset('images/'~job.logo) }}" alt="{{ job.company }}">
+            </a>
+        </div>
+        <div class="col-7">
+            <h3>{{ job.position }}</h3>
+            <p>{{ job.description }}</p>
+            <p>Posté à {{ job.createdAt|date("m/d/Y") }}</p>
+            <a class="btn btn-primary" href="#">En savoir plus</a>
+        </div>
+    </div>
+{% endblock %}

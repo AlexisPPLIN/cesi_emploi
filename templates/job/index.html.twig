@@ -7,7 +7,7 @@
     {% for job in ListJobs %}
         <div class="row">
                 <div class="col-5">
-                        <a href="#"><img class="img-fluid rounded" width="300px" src="/images/{{ job.logo }}" alt="{{ job.company }}"></a>
+                        <a href="#"><img class="img-fluid rounded" width="300px" src="{{ asset("images"/~job.logo) }}" alt="{{ job.company }}"></a>
                 </div>
 
             <div class="col-7">
