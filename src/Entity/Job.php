@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
+use App\Helper\SlugifyHelper;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\JobRepository")
@@ -312,5 +313,23 @@ class Job
      */
     public function setUpdatedAtValue(){
         $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * Get company slug
+     *
+     * @return string
+     */
+    public function getCompanySlug():string{
+        return SlugifyHelper::slugify($this->company);
+    }
+
+    /**
+     * Get position slug
+     *
+     * @return string
+     */
+    public function getPositionSlug():string{
+        return SlugifyHelper::slugify($this->position);
     }
 }
