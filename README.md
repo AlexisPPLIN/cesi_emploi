@@ -15,10 +15,6 @@ Méthode : je met à jour le git dès qu'un exercice est terminé
 `git clone https://github.com/DevEkode/cesi_emploi.git`  
 `cd cesi_emploi`
 
-### Install dependencies
-
-`php composer.phar install` or `composer install`
-
 ## Configuration
 
 1. Copy `.env.example` to `.env`
@@ -31,6 +27,10 @@ Méthode : je met à jour le git dès qu'un exercice est terminé
 # Check the ip and port
 DATABASE_URL=mysql://db_user:db_pass@127.0.0.1:3306/db_name?serverVersion=10.4
 ```
+
+### Install dependencies
+
+`php composer.phar install` or `composer install`
 
 ## Migrate database
 
